@@ -15,7 +15,7 @@ in {
   hostname = "${hostname}";
   gitUsername = "ratfink417";
   gitEmail = "ratfink417@gmail.com";
-  theme = "gigavolt";
+  theme = "catppuccin-mocha";
   slickbar = if waybarStyle == "slickbar" then true else false;
   slickbar-num = if waybarStyle == "slickbar-num" then true else false;
   simplebar = if waybarStyle == "simplebar" then true else false;
@@ -37,14 +37,14 @@ in {
   theSecondKBDLayout = "de";
   theKBDVariant = "";
   theLCVariables = "en_US.UTF-8";
-  theTimezone = "America/Los_Angeles";
-  theShell = "zsh"; # Possible options: bash, zsh
+  theTimezone = "America/Chicago";
+  theShell = "bash"; # Possible options: bash, zsh
   theKernel = "default"; # Possible options: default, latest, lqx, xanmod, zen
   sdl-videodriver = "x11"; # Either x11 or wayland ONLY. Games might require x11 set here
   # For Hybrid Systems intel-nvidia
   # Should Be Used As gpuType
   cpuType = "intel";
-  gpuType = "amd";
+  gpuType = "intel";
 
   # Nvidia Hybrid Devices
   # ONLY NEEDED FOR HYBRID
@@ -67,7 +67,7 @@ in {
   # Enable Flatpak & Larger Programs
   distrobox = false;
   flatpak = false;
-  kdenlive = false;
+  kdenlive = true;
   blender = true;
 
   # Enable Support For
