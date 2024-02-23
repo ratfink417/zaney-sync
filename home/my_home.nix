@@ -9,11 +9,16 @@ in {
     krita 
     openvpn 
     lazygit
+    # import my scripts
+    (import ../scripts/wallcmd.nix { inherit pkgs; inherit wallpaperDir; inherit username; inherit wallpaperGit; })
   ];
 
   # import my nix configurations
   imports = [
     # user configs
     ./zsh_settings.nix
+    ./taskwarrior.nix
+    ./vpn_menu.nix 
+    ./theme_menu.nix 
   ];
 }

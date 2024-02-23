@@ -21,6 +21,7 @@ cp -R $ZANEYOS_ROOT/* $DOTFILES_ROOT
 # install my dotfiles (hopefully in the right place in the new tree)
 cp -rpv ./home/* $DOTFILES_HOME
 cp -rpv ./system/* $DOTFILES_SYS
+cp -rpv ./scripts/* $DOTFILES_SCRIPTS
 
 # add my_home.nix to config/home/default.nix with sed or diff
 NIX_HOME_FILE_ADDED=$(cat $DOTFILES_HOME/default.nix)
