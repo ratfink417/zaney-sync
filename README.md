@@ -11,12 +11,21 @@ Then run a `flake-rebuild` to update the flake and after doing this, you should 
 for you again.
         - right now you need to write these into zaney-sync but in the future it will be inherited from options.nix
 
-# How To Use
-## Edit bootstrap.sh
-just change the paths for these to variables to whatever your preferenceses are.
+# How To Customize
+## Run clean-tree.sh
+run the `clean-tree.sh` script from the root of this repository to delete my configs and replace them with empty templates to get you started 
+managing your own.
+
+This script deletes out all of my stuff and copies in the bare minimum you'd need to have `zany-sync` working. It will prompt you for the path you'd like 
+to keep your configuration files in. Then it will run some sed commands to place those paths in the script.
+
+## Run bootstrap.sh
+If you ran `clean-tree.sh` then, you don't need to edit this and it was done for you by running the script. If you wanted to use my configs or you are me 
+and ran this for whatever reason then you can just edit these variables by hand in the `bootstrap.sh` file
 
 ![](img/bootstrap_sh_vars.png)
 
+## Make it your own 
 As often as you can; make all of your configurations in their own nix files, they might look something like this.
 
 ![](img/example_nix.png)
