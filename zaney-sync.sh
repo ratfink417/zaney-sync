@@ -1,3 +1,6 @@
+# path to where this repo should be
+ZANEY_SYNC_REPO=/home/johnny/src/zaney-sync
+
 # paths in my dotfiles tree
 DOTFILES_ROOT=/home/johnny/.dotfiles
 DOTFILES_HOME=$DOTFILES_ROOT/config/home
@@ -36,20 +39,26 @@ if ! echo $NIX_SYS_FILE_ADDED | grep -q "my.nix"; then
   sed -i 's/\]\;/  \.\/my_system\.nix\n  \]\;/' $DOTFILES_SYS/default.nix
 fi
 
-# prompt: ask user which config to choose
-echo "use the laptop or desktop config?"
-read OPTION_CHOICE
-
-# install the proper optoins.nix file 
-if [ "$OPTION_CHOICE" = "desktop" ]; then
-  echo "Applying your desktop options"
-  cp ./options/desktop.nix $DOTFILES_ROOT/options.nix
-fi
-
-if [ "$OPTION_CHOICE" = "laptop" ]; then
-  echo "Applying your desktop options"
-  cp ./options/laptop.nix $DOTFILES_ROOT/options.nix
-fi
-
 # install the proper hardware.nix file
 cp /etc/nixos/hardware-configuration.nix $DOTFILES_ROOT/hardware.nix
+
+# prompt: ask user which config to choose
+while [ true ]
+do
+  clear
+  echo "which options file needs to be installed?"
+  echo
+  ls -l options | grep -Po "[^\s]+\.nix"
+  echo
+  echo "file name: "
+  read OPTION_CHOICE
+
+  # make sure the answered file name wasn't mispelled
+  if [ -f ./options/$OPTION_CHOICE ]; then
+    cp -v ./options/$OPTION_CHOICE $DOTFILES_ROOT/options.nix
+    break;
+  else
+    echo "you may have mispelled your answer"
+  fi
+done
+# END prompt
