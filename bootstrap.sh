@@ -2,14 +2,14 @@
 ZANEY_SYNC_REPO=/home/johnny/src/zaney-sync
 
 # paths in my dotfiles tree
-DOTFILES_ROOT=/home/johnny/.dotfiles
+DOTFILES_ROOT=/home/johnny/.dotfiles # change this to the folder you want your dotfiles saved to
 DOTFILES_HOME=$DOTFILES_ROOT/config/home
 DOTFILES_FILES=$DOTFILES_HOME/config/files
 DOTFILES_SYS=$DOTFILES_ROOT/config/system
 DOTFILES_SCRIPTS=$DOTFILES_ROOT/config/scripts
 
 # paths in the zaneyos dotfiles tree
-ZANEYOS_ROOT=/home/johnny/src/zaneyos 
+ZANEYOS_ROOT=/home/johnny/src/zaneyos # change this to the folder where you want to keep zanyos
 ZANEYOS_HOME=$ZANEYOS_ROOT/config/home
 ZANEYOS_FILES=$ZANEYOS_HOME/config/files
 ZANEYOS_SYS=$ZANEYOS_ROOT/config/system
