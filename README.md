@@ -14,7 +14,7 @@ for you again.
 # Use
 As often as you can; make all of your configurations in their own nix files, they might look something like this.
 
-<zsh_settings.nix>
+![](img/example_nix.png)
 
 if it was an added nix file from the home directory, then make sure to add it to `my_home.nix`
 
