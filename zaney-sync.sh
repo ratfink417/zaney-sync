@@ -36,8 +36,20 @@ if ! echo $NIX_SYS_FILE_ADDED | grep -q "my.nix"; then
   sed -i 's/\]\;/  \.\/my_system\.nix\n  \]\;/' $DOTFILES_SYS/default.nix
 fi
 
+# prompt: ask user which config to choose
+echo "use the laptop or desktop config?"
+read OPTION_CHOICE
+
 # install the proper optoins.nix file 
-cp ./options/laptop.nix $DOTFILES_ROOT/options.nix
+if [ "$OPTION_CHOICE" = "desktop" ]; then
+  echo "Applying your desktop options"
+  cp ./options/desktop.nix $DOTFILES_ROOT/options.nix
+fi
+
+if [ "$OPTION_CHOICE" = "laptop" ]; then
+  echo "Applying your desktop options"
+  cp ./options/laptop.nix $DOTFILES_ROOT/options.nix
+fi
 
 # install the proper hardware.nix file
 cp /etc/nixos/hardware-configuration.nix $DOTFILES_ROOT/hardware.nix
