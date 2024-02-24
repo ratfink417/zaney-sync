@@ -9,7 +9,6 @@ are all appended in their respective `default.nix` files from zaneyos.
 
 Then run a `flake-rebuild` to update the flake and after doing this, you should be able to run `zany-sync` from the command line which will do all of this 
 for you again.
-        - right now you need to write these into zaney-sync but in the future it will be inherited from options.nix
 
 # How To Customize
 ## Run clean-tree.sh
@@ -17,13 +16,17 @@ run the `clean-tree.sh` script from the root of this repository to delete my con
 managing your own.
 
 This script deletes out all of my stuff and copies in the bare minimum you'd need to have `zany-sync` working. It will prompt you for the path you'd like 
-to keep your configuration files in. Then it will run some sed commands to place those paths in the script.
+to keep your configuration files in. Then it will run some sed commands to place those paths in the `bootstrap.sh` script.
 
 ## Run bootstrap.sh
 If you ran `clean-tree.sh` then, you don't need to edit this and it was done for you by running the script. If you wanted to use my configs or you are me 
 and ran this for whatever reason then you can just edit these variables by hand in the `bootstrap.sh` file
 
 ![](img/bootstrap_sh_vars.png)
+
+## Install your options.nix file
+Whatever you have been using for your `options.nix` file till now just needs to be copied in the `options/` folder of this repository. You can add option files
+for however many systems you use. this is used for the prompt you'll see in `bootstrap.sh` when it asks you which options file to use.
 
 ## Make it your own 
 As often as you can; make all of your configurations in their own nix files, they might look something like this.
