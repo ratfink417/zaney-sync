@@ -20,9 +20,9 @@ if it was an added nix file from the home directory, then make sure to add it to
 
 ![](img/my_home_nix.png)
 
-*home/my_home.nix* is where you'd add new nix files to include or files that need to be copied into your home dir (kinda like home/packages.nix)
+**home/my_home.nix** is where you'd add new nix files to include or files that need to be copied into your home dir (kinda like home/packages.nix)
 
-*home/files.nix* is where you'd add new files that need to be created and copied over to the home folder 
+**home/files.nix** is where you'd add new files that need to be created and copied over to the home folder 
 (kinda like zaney's home/files.nix - likewise, files are kept in the home/files folder)
 
-*system/my_system.nix* is where you'd add system nix files and packages to be included
+**system/my_system.nix** is where you'd add system nix files and packages to be included
