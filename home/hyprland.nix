@@ -134,7 +134,7 @@ in with lib; {
       ''}
       bind = ${modifier},E,exec,emopicker9000
       bind = ${modifier},S,exec,screenshootin
-      bind = ${modifier},D,exec,rofi-launcher
+      bind = ${modifier},D,exec,app-launcher
       bind = ${modifier},O,exec,obs
       bind = ${modifier},G,exec,krita
       bind = ${modifier}SHIFT,G,exec,godot4
@@ -144,6 +144,7 @@ in with lib; {
       bind = ${modifier},P,pseudo,
       bind = ${modifier}SHIFT,I,togglesplit,
       bind = ${modifier},F,fullscreen,
+      bind = ${modifier}SHIFT,S,exec,wallcmd
       bind = ${modifier}SHIFT,F,togglefloating,
       bind = ${modifier}SHIFT,C,exit,
       bind = ${modifier}SHIFT,left,movewindow,l
