@@ -3,7 +3,7 @@ This is how I keep my nix configurations syncronized with [zaneyos](https://gitl
 
 ![](img/config_tree.png)
 
-when you clone this repo int ~/src and run `zaney-sync.sh` it will copy all of the files from this repo's home,system and scripts folders 
+when you clone this repo int ~/src and run `bootstrap.sh` it will copy all of the files from this repo's home,system and scripts folders 
 into wherever your dotfiles are being kept. Then it runs some sed commands to make sure `home/my_files.nix`,`home/my_home.nix` and `system/my_system.nix`
 are all appended in their respective `default.nix` files from zaneyos.
 
@@ -11,7 +11,12 @@ Then run a `flake-rebuild` to update the flake and after doing this, you should 
 for you again.
         - right now you need to write these into zaney-sync but in the future it will be inherited from options.nix
 
-# Use
+# How To Use
+## Edit bootstrap.sh
+just change the paths for these to variables to whatever your preferenceses are.
+
+![](img/bootstrap_sh_vars.png)
+
 As often as you can; make all of your configurations in their own nix files, they might look something like this.
 
 ![](img/example_nix.png)
