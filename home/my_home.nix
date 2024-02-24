@@ -9,6 +9,7 @@ in {
     krita 
     openvpn 
     lazygit
+    fzf
     # import my scripts
     (import ../scripts/wallcmd.nix { inherit pkgs; inherit wallpaperDir; inherit username; inherit wallpaperGit; })
   ];

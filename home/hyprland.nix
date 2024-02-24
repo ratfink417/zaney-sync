@@ -7,7 +7,8 @@ let
     browser cpuType gpuType
     wallpaperDir borderAnim
     theKBDLayout terminal
-    theSecondKBDLayout;
+    theSecondKBDLayout
+    theKBDVariant sdl-videodriver;
 in with lib; {
   wayland.windowManager.hyprland = {
     enable = true;
@@ -34,13 +35,13 @@ in with lib; {
       }
 
       input {
-        kb_layout = ${theKBDLayout},${theSecondKBDLayout}
+        kb_layout = ${theKBDLayout}, ${theSecondKBDLayout}
 	kb_options = grp:alt_shift_toggle
         kb_options=caps:super
         follow_mouse = 1
         touchpad {
           natural_scroll = false
-	  tap-to-click = false
+          tap-to-click = flase
         }
         sensitivity = 0 # -1.0 - 1.0, 0 means no modification.
         accel_profile = flat
@@ -52,9 +53,7 @@ in with lib; {
       env = XDG_SESSION_DESKTOP, Hyprland
       env = GDK_BACKEND, wayland
       env = CLUTTER_BACKEND, wayland
-      env = SDL_VIDEODRIVER, wayland
-      env = XCURSOR_SIZE, 24
-      env = XCURSOR_THEME, Bibata-Modern-Ice
+      env = SDL_VIDEODRIVER, ${sdl-videodriver}
       env = QT_QPA_PLATFORM, wayland
       env = QT_WAYLAND_DISABLE_WINDOWDECORATION, 1
       env = QT_AUTO_SCREEN_SCALE_FACTOR, 1
@@ -113,7 +112,6 @@ in with lib; {
       exec-once = $POLKIT_BIN
       exec-once = dbus-update-activation-environment --systemd --all
       exec-once = systemctl --user import-environment QT_QPA_PLATFORMTHEME WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
-      exec-once = hyprctl setcursor Bibata-Modern-Ice 24
       exec-once = swww init
       exec-once = waybar
       exec-once = swaync
@@ -127,9 +125,8 @@ in with lib; {
         new_is_master = true
       }
       bind = ${modifier},Return,exec,${terminal}
-      bind = ${modifier}SHIFT,Return,exec,rofi-launcher
       bind = ${modifier}SHIFT,W,exec,web-search
-      bind = ${modifier}SHIFT,C,exec,swaync-client -rs
+      bind = ${modifier}SHIFT,N,exec,swaync-client -rs
       ${if browser == "google-chrome" then ''
 	bind = ${modifier},W,exec,google-chrome-stable
       '' else ''
@@ -137,18 +134,18 @@ in with lib; {
       ''}
       bind = ${modifier},E,exec,emopicker9000
       bind = ${modifier},S,exec,screenshootin
-      bind = ${modifier},D,exec,rofi -show drun
+      bind = ${modifier},D,exec,rofi-launcher
       bind = ${modifier},O,exec,obs
-      #bind = ${modifier},G,exec,krita
+      bind = ${modifier},G,exec,krita
       bind = ${modifier}SHIFT,G,exec,godot4
       bind = ${modifier},T,exec,thunar
-      bind = ${modifier},M,exec,ario
+      bind = ${modifier},M,exec,spotify
       bind = ${modifier},Q,killactive,
       bind = ${modifier},P,pseudo,
       bind = ${modifier}SHIFT,I,togglesplit,
       bind = ${modifier},F,fullscreen,
       bind = ${modifier}SHIFT,F,togglefloating,
-      bind = ${modifier}SHIFT,S, exec,/etc/profiles/per-user/johnny/bin/wallcmd 
+      bind = ${modifier}SHIFT,C,exit,
       bind = ${modifier}SHIFT,left,movewindow,l
       bind = ${modifier}SHIFT,right,movewindow,r
       bind = ${modifier}SHIFT,up,movewindow,u
@@ -175,6 +172,8 @@ in with lib; {
       bind = ${modifier},8,workspace,8
       bind = ${modifier},9,workspace,9
       bind = ${modifier},0,workspace,10
+      bind = ${modifier}SHIFT,SPACE,movetoworkspace,special
+      bind = ${modifier},SPACE,togglespecialworkspace
       bind = ${modifier}SHIFT,1,movetoworkspace,1
       bind = ${modifier}SHIFT,2,movetoworkspace,2
       bind = ${modifier}SHIFT,3,movetoworkspace,3
@@ -196,6 +195,10 @@ in with lib; {
       bind = ,XF86AudioRaiseVolume,exec,wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+
       bind = ,XF86AudioLowerVolume,exec,wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
       binde = ,XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
+      bind = ,XF86AudioPlay, exec, playerctl play-pause
+      bind = ,XF86AudioPause, exec, playerctl play-pause
+      bind = ,XF86AudioNext, exec, playerctl next
+      bind = ,XF86AudioPrev, exec, playerctl previous
       bind = ,XF86MonBrightnessDown,exec,brightnessctl set 5%-
       bind = ,XF86MonBrightnessUp,exec,brightnessctl set +5%
     '' ];

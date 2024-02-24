@@ -36,7 +36,7 @@ if ! echo $NIX_SYS_FILE_ADDED | grep -q "my.nix"; then
 fi
 
 # install the proper optoins.nix file 
-cp ./options/options.nix $DOTFILES_ROOT/options.nix
+cp ./options/desktop.nix $DOTFILES_ROOT/options.nix
 
 # install the proper hardware.nix file
 cp /etc/nixos/hardware-configuration.nix $DOTFILES_ROOT/hardware.nix
