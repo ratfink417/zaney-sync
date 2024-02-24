@@ -1,5 +1,5 @@
 # zany-sync
-This is how I keep my nix configurations syncronized with zaneyos (link should go here ). The folder structure is similar to what's in zaneyos
+This is how I keep my nix configurations syncronized with [zaneyos](https://gitlab.com/Zaney/zaneyos). The folder structure is similar to what's in zaneyos
 
 ![](img/config_tree.png)
 
