@@ -1,7 +1,7 @@
 # zany-sync
 This is how I keep my nix configurations syncronized with zaneyos (link should go here ). The folder structure is similar to what's in zaneyos
 
-<left mine> <right zaney>
+![](img/config_tree.png)
 
 when you clone this repo int ~/src and run `zaney-sync.sh` it will copy all of the files from this repo's home,system and scripts folders 
 into wherever your dotfiles are being kept. Then it runs some sed commands to make sure `home/my_files.nix`,`home/my_home.nix` and `system/my_system.nix`
