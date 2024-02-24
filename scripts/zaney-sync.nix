@@ -1,4 +1,4 @@
-{ pkgs, username, ... }:
+{ pkgs, username, flakeDir, ... }:
 pkgs.writeShellScriptBin "zaney-sync" ''
 # path where your source files are kept (parent folder of zaney-sync)
 USER_SRC_FOLDER=/home/${username}/src
@@ -7,7 +7,7 @@ USER_SRC_FOLDER=/home/${username}/src
 ZANEY_SYNC_ROOT=$USER_SRC_FOLDER/zaney-sync
 
 # paths in my dotfiles tree
-DOTFILES_ROOT=/home/${username}/.dotfiles
+DOTFILES_ROOT=${flakeDir}
 DOTFILES_HOME=$DOTFILES_ROOT/config/home
 DOTFILES_FILES=$DOTFILES_HOME/config/files
 DOTFILES_SYS=$DOTFILES_ROOT/config/system
