@@ -18,7 +18,7 @@ As often as you can; make all of your configurations in their own nix files, the
 
 if it was an added nix file from the home directory, then make sure to add it to `my_home.nix`
 
-<example of file being added to my_home.nix>
+![](img/my_home_nix.png)
 
 home/my_home.nix is where you'd add new nix files to include or files that need to be copied into your home dir (kinda like home/packages.nix)
 
