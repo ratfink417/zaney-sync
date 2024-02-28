@@ -1,9 +1,13 @@
 { pkgs, config, ... }:
-
+# The purpose of this file is to create ./config/rofi/app-launch.rasi
+# so that the script in your dotfiles scripts folder "app-launch.nix" 
+# can call rofi -show drun $HOME/.config/rofi/app-launch.rasi which
+# should call it with this configuration that only changes the banner
+# from what comes with zaneyos
 let
   palette = config.colorScheme.palette;
 in {
-  home.file.".config/rofi/vpn_menu.rasi".text = ''
+  home.file.".config/rofi/vpn-launch.rasi".text = ''
     @theme "/dev/null"
 
     * {
@@ -82,7 +86,7 @@ in {
     }
 
     inputbar {
-      background-image: url("~/.config/rofi/vpn_menu.jpg", width);
+      background-image: url("~/.config/rofi/vpn-launch.jpg", width);
       padding: 180 0 0;
       margin: 0 0 0 0;
     } 

@@ -15,7 +15,7 @@ in {
   hostname = "${hostname}";
   gitUsername = "ratfink417";
   gitEmail = "ratfink417@gmail.com";
-  theme = "gigavolt";
+  theme = "monokai";
   slickbar = if waybarStyle == "slickbar" then true else false;
   slickbar-num = if waybarStyle == "slickbar-num" then true else false;
   simplebar = if waybarStyle == "simplebar" then true else false;
@@ -78,9 +78,12 @@ in {
   # If You Disable All You Get Kitty
   wezterm = false;
   alacritty = true;
-  kitty = false;
+  kitty = true;
 
   # Enable Python & PyCharm
   python = false;
+  
+  # Enable SyncThing
+  syncthing = false;
 
 }
