@@ -8,7 +8,7 @@ let
   hostname = "nixos";
   userHome = "/home/${username}";
   flakeDir = "${userHome}/.dotfiles";
-  waybarStyle = "slickbar-num"; # simplebar, slickbar, slickbar-num, or default
+  waybarStyle = "slickbar"; # simplebar, slickbar, slickbar-num, or default
 in {
   # User Variables
   username = "${username}";
@@ -17,8 +17,8 @@ in {
   gitEmail = "ratfink417@gmail.com";
   theme = "gigavolt";
   slickbar = if waybarStyle == "slickbar" then true else false;
-  slickbar-num = if waybarStyle == "slickbar-num" then true else false;
   simplebar = if waybarStyle == "simplebar" then true else false;
+  bar-number = true;
   borderAnim = true;
   browser = "brave";
   wallpaperGit = "https://gitlab.com/Zaney/my-wallpapers.git"; # This will give you my wallpapers
@@ -28,7 +28,7 @@ in {
   flakeDir = "${flakeDir}";
   flakePrev = "${userHome}/.zaneyos-previous";
   flakeBackup = "${userHome}/.zaneyos-backup";
-  terminal = "alacritty"; # This sets the terminal that is used by the hyprland terminal keybinding
+  terminal = "kitty"; # This sets the terminal that is used by the hyprland terminal keybinding
 
   # System Settings
   clock24h = false;
@@ -82,5 +82,8 @@ in {
 
   # Enable Python & PyCharm
   python = false;
+
+  # Enable SyncThing
+  syncthing = false;
 
 }
