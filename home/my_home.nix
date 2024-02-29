@@ -25,6 +25,7 @@ in {
     ./vpn-launch_menu.nix
     ./theme_menu.nix 
     ./app-launch_menu.nix
+    ./lf.nix
     ./my_files.nix
   ];
 }
