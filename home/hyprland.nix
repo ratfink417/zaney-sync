@@ -127,11 +127,6 @@ in with lib; {
       bind = ${modifier},Return,exec,${terminal}
       bind = ${modifier}SHIFT,W,exec,web-search
       bind = ${modifier}SHIFT,N,exec,swaync-client -rs
-      ${if browser == "google-chrome" then ''
-	bind = ${modifier},W,exec,google-chrome-stable
-      '' else ''
-	bind = ${modifier},W,exec,${browser}
-      ''}
       bind = ${modifier},E,exec,emopicker9000
       bind = ${modifier},S,exec,screenshootin
       bind = ${modifier},D,exec,app-launcher
@@ -139,6 +134,7 @@ in with lib; {
       bind = ${modifier},G,exec,krita
       bind = ${modifier}SHIFT,G,exec,godot4
       bind = ${modifier},T,exec,thunar
+      bind = ${modifier},W,exec,killall waybar || waybar
       bind = ${modifier},M,exec,spotify
       bind = ${modifier},Q,killactive,
       bind = ${modifier},P,pseudo,
