@@ -65,7 +65,7 @@ in {
   printer = false;
 
   # Enable Flatpak & Larger Programs
-  distrobox = false;
+  distrobox = true;
   flatpak = false;
   kdenlive = false;
   blender = true;
