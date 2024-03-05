@@ -20,6 +20,9 @@ ZANEYOS_FILES=$ZANEYOS_HOME/config/files
 ZANEYOS_SYS=$ZANEYOS_ROOT/config/system
 ZANEYOS_SCRIPTS=$ZANEYOS_ROOT/config/scripts
 
+# path where vim distros and configs are kept
+VIM_ROOT=/home/${username}/.config
+
 # ensure the zaney-sync repo exists in /home/user_name/src/
 cd $USER_SRC_FOLDER
 cd $ZANEY_SYNC_ROOT
@@ -67,6 +70,12 @@ fi
 
 # install the proper hardware.nix file
 cp /etc/nixos/hardware-configuration.nix $DOTFILES_ROOT/hardware.nix
+
+# install/update my neovim configs
+${pkgs.git}/bin/git clone https://github.com/AstroNvim/AstroNvim $VIM_ROOT/AstroNvim   # astro nvim
+${pkgs.git}/bin/git clone https://github.com/folke/lazy.nvim.git $VIM_ROOT/LazyNvim    # lazy nvim 
+${pkgs.git}/bin/git clone https://spacevim.org/git/repos/SpaceVim/ $VIM_ROOT/SpaceNvim # space nvim
+${pkgs.git}/bin/git clone git@github.com:NvChad/NvChad.git $VIM_ROOT/NvChad            # nvchad nvmim
 
 # prompt: ask user which config to choose
 while [ true ]

@@ -10,6 +10,9 @@ in {
     openvpn 
     lazygit
     fzf
+    ripgrep
+    bottom
+#    warp-terminal
     # import my scripts
     (import ../scripts/wallcmd.nix { inherit pkgs; inherit wallpaperDir; inherit username; inherit wallpaperGit; })
     (import ../scripts/app-launcher.nix { inherit pkgs; inherit username; })

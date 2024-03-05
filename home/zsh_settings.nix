@@ -13,11 +13,15 @@ lib.mkIf (theShell == "zsh") {
       vim="nvim";
       taskopen="taskopen -c /home/${username}/.config/task/taskopenrc";
       taskview="taskopen -c /home/${username}/.config/task/taskopenrc -x glow";
+
+      # nvims paths
+      nvim-zaney="NVIM_APPNAME=nvim nvim";
+      nvim-astro="NVIM_APPNAME=AstroNvim nvim";
     };
     # add zsh config picker
     initExtra = ''
 function nvims() {
-  items=("default (zaneyos nixvim)" "my-neovim" "NvChad" "AstroNvim")
+  items=("default (nvim)" "nvim" "AstroNvim")
   config=$(printf "%s\n" ''${items[@]} | fzf --prompt=" Neovim Config  " --height=~50% --layout=reverse --border --exit-0)
   if [[ -z $config ]]; then
     echo "Nothing selected"

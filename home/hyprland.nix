@@ -21,9 +21,8 @@ in with lib; {
       modifier = "SUPER";
     in concatStrings [ ''
       monitor=,preferred,auto,1
-      windowrule = float, ^(steam)$
-      windowrule = size 1080 900, ^(steam)$
-      windowrule = center, ^(steam)$
+      windowrule = fullscreen, ^(wlogout)$
+      windowrule = animation fade,^(wlogout)$
       general {
         gaps_in = 6
         gaps_out = 8
@@ -41,7 +40,7 @@ in with lib; {
         follow_mouse = 1
         touchpad {
           natural_scroll = false
-          tap-to-click = flase
+          tap-to-click = 0
         }
         sensitivity = 0 # -1.0 - 1.0, 0 means no modification.
         accel_profile = flat
