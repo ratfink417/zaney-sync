@@ -23,6 +23,7 @@ lib.mkIf (theShell == "zsh") {
     };
     # add zsh config picker
     initExtra = ''
+export NIX_LD=$(nix eval --impure --raw --expr 'let pkgs = import <nixpkgs> {}; NIX_LD = pkgs.lib.fileContents "${pkgs.stdenv.cc}/nix-support/dynamic-linker"; in NIX_LD')
 function nvims() {
   items=("default (nvim)" "nvim" "AstroNvim" "LazyNvim"  "SpaceNvim" "NvChad")
   config=$(printf "%s\n" ''${items[@]} | fzf --prompt=" Neovim Config  " --height=~50% --layout=reverse --border --exit-0)

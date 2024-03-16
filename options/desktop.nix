@@ -28,7 +28,7 @@ in {
   flakeDir = "${flakeDir}";
   flakePrev = "${userHome}/.zaneyos-previous";
   flakeBackup = "${userHome}/.zaneyos-backup";
-  terminal = "kitty"; # This sets the terminal that is used by the hyprland terminal keybinding
+  terminal = "alacritty"; # This sets the terminal that is used by the hyprland terminal keybinding
 
   # System Settings
   clock24h = false;
@@ -77,7 +77,7 @@ in {
 
   # Enable Terminals
   # If You Disable All You Get Kitty
-  wezterm = false;
+  wezterm = true;
   alacritty = true;
   kitty = true;
 

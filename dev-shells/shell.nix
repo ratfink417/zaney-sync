@@ -2,39 +2,52 @@
 pkgs.mkShell {
   # install packages
   buildInputs = with pkgs; [
-    python3
+    # lazyvim package denpendencies
+    fd
+    lazygit
+    ripgrep
+
+    # ruby
+    ruby
+
+    # julia
+    julia
+
+    # lua
     lua
-    # python libraries 
+    luarocks
+
+    # java
+    openjdk17
+
+    # python 
+    python3
+    poetry
     (pkgs.python3.withPackages (python-pkgs: [
-      python-pkgs.pandas
-      python-pkgs.requests
-      python-pkgs.yq
+      python-pkgs.pip
     ]))
+
+    # php 
+    php83
+    php83Packages.composer
+    (pkgs.php.buildEnv{
+      extensions = ({ enabled, all }: enabled ++ (with all;[
+        xdebug
+      ]));
+    })
   ];
 
-  # set config path for vim folders
-  VIM_ROOT=/home/johnny/.config;
-
+  NVIM_APPNAME="johnny-vim";
+  VIM_ROOT="/home/johnny/.config";
+  CONFIG_REPO="git@github.com:ratfink417/johnny-vim.git";
   shellHook =
   ''
-    # install some neovim configs
-    git clone https://github.com/AstroNvim/AstroNvim $VIM_ROOT/AstroNvim   # astro nvim
-    git clone https://github.com/folke/lazy.nvim.git $VIM_ROOT/LazyNvim    # lazy nvim 
-    git clone https://spacevim.org/git/repos/SpaceVim/ $VIM_ROOT/SpaceNvim # space nvim
-    git clone git@github.com:NvChad/NvChad.git $VIM_ROOT/NvChad            # nvchad nvmim
+    # install my neovim config if it's not already on the system
+    if [ ! "$(cd $VIM_ROOT/$NVIM_APPNAME && git config --get remote.origin.url)" == "$CONFIG_REPO" ]; then
+      git clone $CONFIG_REPO $VIM_ROOT/$NVIM_APPNAME
+    fi
 
-    # nvims paths
-    function nvims() {
-      items=("default (nvim)" "nvim" "AstroNvim" "SpaceNvim" "NvChad")
-      config=$(printf "%s\n" ''${items[@]} | fzf --prompt=" Neovim Config  " --height=~50% --layout=reverse --border --exit-0)
-      if [[ -z $config ]]; then
-        echo "Nothing selected"
-        return 0
-      elif [[ $config == "default" ]]; then
-        config=""
-      fi
-      NVIM_APPNAME=$config nvim $@
-      exec zsh
-    }
+    # go into my default shell zsh
+    exec zsh
   '';
 }

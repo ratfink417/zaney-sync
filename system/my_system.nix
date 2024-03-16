@@ -7,4 +7,5 @@
   # import my system configs
   imports = [
   ];
+  programs.nix-ld.enable = true;
 }
