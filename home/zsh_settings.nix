@@ -14,6 +14,9 @@ lib.mkIf (theShell == "zsh") {
       taskopen="taskopen -c /home/${username}/.config/task/taskopenrc";
       taskview="taskopen -c /home/${username}/.config/task/taskopenrc -x glow";
 
+      # because I can't type the word "clear" without fat fingering it
+      c="clear";
+
       # nvims paths
       nvim-zaney="NVIM_APPNAME=nvim nvim";
       nvim-astro="NVIM_APPNAME=AstroNvim nvim";
@@ -21,7 +24,7 @@ lib.mkIf (theShell == "zsh") {
     # add zsh config picker
     initExtra = ''
 function nvims() {
-  items=("default (nvim)" "nvim" "AstroNvim")
+  items=("default (nvim)" "nvim" "AstroNvim" "LazyNvim"  "SpaceNvim" "NvChad")
   config=$(printf "%s\n" ''${items[@]} | fzf --prompt=" Neovim Config  " --height=~50% --layout=reverse --border --exit-0)
   if [[ -z $config ]]; then
     echo "Nothing selected"
