@@ -12,6 +12,7 @@ in {
     fzf
     ripgrep
     bottom
+
     # import my scripts
     (import ../scripts/wallcmd.nix { inherit pkgs; inherit wallpaperDir; inherit username; inherit wallpaperGit; })
     (import ../scripts/app-launcher.nix { inherit pkgs; inherit username; })
@@ -29,6 +30,8 @@ in {
     ./app-launch_menu.nix
     ./lf.nix
     ./tmux.nix
+    ./direnv.nix
+    ./lazyvim.nix
     ./my_files.nix
   ];
 }

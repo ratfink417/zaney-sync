@@ -13,6 +13,11 @@ DOTFILES_FILES=$DOTFILES_HOME/config/files
 DOTFILES_SYS=$DOTFILES_ROOT/config/system
 DOTFILES_SCRIPTS=$DOTFILES_ROOT/config/scripts
 
+# my neovim repo
+MY_NEOVIM_REPO="git@github.com:ratfink417/johnny-vim.git"
+MY_NEOVIM_CONFIG_DIR=/home/${username}/.config/johnny-vim
+MY_NEOVIM_REPO_NAME=johnny-vim
+
 # paths in the zaneyos dotfiles tree
 ZANEYOS_ROOT=/home/${username}/src/zaneyos 
 ZANEYOS_HOME=$ZANEYOS_ROOT/config/home
@@ -89,4 +94,14 @@ do
   fi
 done
 # END prompt
+
+# ensure my lazyvim config is installed
+cd $MY_NEOVIM_CONFIG_DIR
+echo "Ensuring /home/${username}/.config/nvim holds my config..."
+MY_NEOVIM_REPO_ASSERTION=$(git config --get remote.origin.url)
+if ! [ "$MY_NEOVIM_REPO_ASSERTION" = "$MY_NEOVIM_REPO" ]; then
+  cd ..
+  rm -rf $MY_NEOVIM_CONFIG_DIR/*
+  git clone $MY_NEOVIM_REPO $MY_NEOVIM_CONFIG_DIR
+fi
 ''
