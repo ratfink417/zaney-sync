@@ -28,6 +28,11 @@
     if-shell -b '[ "$(echo "$tmux_version >= 3.0" | bc)" = 1 ]' \
         "bind-key -n 'C-\\' if-shell \"$is_vim\" 'send-keys C-\\\\'  'select-pane -l'"
 
+    # set prefix
+    unbind C-b
+    set -g prefix C-a
+    bind C-a send-prefix
+
     # movement keys 
     bind-key -T copy-mode-vi 'C-h' select-pane -L
     bind-key -T copy-mode-vi 'C-j' select-pane -D
@@ -40,7 +45,7 @@
 
     # show host name and IP address on left side of status bar
     set -g status-left-length 85
-    set -g status-left "#[fg=colour198]: #h : #[fg=brightblue]#(curl icanhazip.com) #(ifconfig en0 | grep 'inet ' | awk '{print \"en0 \" $2}') #(ifconfig en1 | grep 'inet ' | awk '{print \"en1 \" $2}') #(ifconfig en3 | grep 'inet ' | awk '{print \"en3 \" $2}') #(ifconfig tun0 | grep 'inet ' | awk '{print \"vpn \" $2}') "
+    set -g status-left "#[fg=colour198] #h : #[fg=brightblue]#(curl icanhazip.com) #(ifconfig en0 | grep 'inet ' | awk '{print \"en0 \" $2}') #(ifconfig en1 | grep 'inet ' | awk '{print \"en1 \" $2}') #(ifconfig en3 | grep 'inet ' | awk '{print \"en3 \" $2}') #(ifconfig tun0 | grep 'inet ' | awk '{print \"vpn \" $2}') "
 
     # show session name, window & pane number, date and time on right side of
     set -g status-right-length 60
@@ -54,9 +59,6 @@
     bind-key -r k resize-pane -U 5
     bind-key -r h resize-pane -L 5
     bind-key -r l resize-pane -R 5
-
-    # source my zshrc when shells open
-    set-option -g default-command zsh
   '';
   };
 }

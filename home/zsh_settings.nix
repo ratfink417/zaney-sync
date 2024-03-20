@@ -22,7 +22,6 @@ lib.mkIf (theShell == "zsh") {
     eval "$(direnv hook zsh)"
     bindkey -s ^r "nvim-johnny\n"
     bindkey -s ^p "project-init\n"
-    export NVIM_APPNAME="johnny-vim"
     '';
 
    # source zshrc in zprofile cuz I guess that's where tmux can find it from
