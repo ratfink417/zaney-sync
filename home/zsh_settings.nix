@@ -9,9 +9,9 @@ lib.mkIf (theShell == "zsh") {
       };
     # setup shell aliases for zsh
     shellAliases = {
-      nano="NVIM_APPNAME='johnny-vim' && nvim";
-      vim="NVIM_APPNAME='johnny-vim' && nvim";
-      zaney-vim="NVIM_APPNAME='nvim' && nvim";
+      nano="NVIM_APPNAME='johnny-vim' nvim";
+      vim="NVIM_APPNAME='johnny-vim' nvim";
+      zaney-vim="NVIM_APPNAME='nvim' nvim";
       taskopen="taskopen -c /home/${username}/.config/task/taskopenrc";
       taskview="taskopen -c /home/${username}/.config/task/taskopenrc -x glow";
       c="clear";

@@ -123,7 +123,7 @@ in with lib; {
       master {
         new_is_master = true
       }
-      bind = ${modifier},Return,exec,${terminal} -e tmux 
+      bind = ${modifier},Return,exec,${terminal} -e initerm 
       bind = ${modifier}SHIFT,W,exec,web-search
       bind = ${modifier}SHIFT,N,exec,swaync-client -rs
       bind = ${modifier},E,exec,emopicker9000

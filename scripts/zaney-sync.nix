@@ -47,6 +47,7 @@ cp -rpv ./scripts/* $DOTFILES_SCRIPTS
 cp -rpv ./dev-shells $DOTFILES_ROOT/config
 cp -rpv ./home/* $DOTFILES_HOME
 cp -rpv ./home/files/* $DOTFILES_FILES
+cp -rpv ./flake.lock $DOTFILES_ROOT # copy over my flake lockfile when needed
 
 # add my_home.nix to config/home/default.nix with sed or diff
 NIX_HOME_FILE_ADDED=$(cat $DOTFILES_HOME/default.nix)

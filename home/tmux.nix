@@ -5,13 +5,20 @@
   home.packages = with pkgs; [
     tmux
   ];
-
   # configure tmux
+  programs.fzf.tmux.enableShellIntegration = true;
   programs.tmux= {
     enable = true;
-    sensibleOnTop = false;
+
+  # option settings
+    sensibleOnTop = false; # don't install the sensible-tmux plugin
+    mouse = true;
+    newSession = true; # Automatically spawn a session if trying to attach and none are running. (this should make it okay to ditch initerm)
+    prefix = "C-a";
+
     plugins = with pkgs.tmuxPlugins; [
-      nord
+      catppuccin
+      tmux-fzf
     ];
   extraConfig = ''
     # Smart pane switching with awareness of Vim splits.
@@ -27,11 +34,6 @@
         "bind-key -n 'C-\\' if-shell \"$is_vim\" 'send-keys C-\\'  'select-pane -l'"
     if-shell -b '[ "$(echo "$tmux_version >= 3.0" | bc)" = 1 ]' \
         "bind-key -n 'C-\\' if-shell \"$is_vim\" 'send-keys C-\\\\'  'select-pane -l'"
-
-    # set prefix
-    unbind C-b
-    set -g prefix C-a
-    bind C-a send-prefix
 
     # movement keys 
     bind-key -T copy-mode-vi 'C-h' select-pane -L
@@ -53,8 +55,10 @@
     set -g status-right "#[fg=blue]#(tmux-cpu --no-color)"
 
     # pane splitting
-    bind \ split-window -h
+    bind \\ split-window -h
     bind - split-window -v
+
+    # resizing panes
     bind-key -r j resize-pane -D 5
     bind-key -r k resize-pane -U 5
     bind-key -r h resize-pane -L 5
